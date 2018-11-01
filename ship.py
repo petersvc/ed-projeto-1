@@ -2,40 +2,44 @@ from node import Node
 #from container import Container
 
 class Ship: # QUEUE
-    def __init__(self, top=None):
+
+    # Start
+    def __init__(self, top = None):
         self._top = top
 
-    def queue_add(self, item):
-        aux = Node(item)
-        if self._top is None:
+    # Add
+    def queue_add(self, new_data):
+        aux = Node(new_data)
+        if self._top == None:
             self._top = aux
         else:
             aux = self._top
             while aux.get_next() != None:
                 aux = aux.get_next()
             aux2 = Node()
-            aux2.set_data(item)
+            aux2.set_data(new_data)
             aux.set_next(aux2)
             aux2.set_next(None)        
     
     # Remove
     def queue_remove(self):
-        if self._top is None:
-            raise IndexError("Nao contem elemento.")
-        self._top = self._top.get_next()
+        if self._top == None:
+            print('Fila vazia')
+        else:
+            self._top = self._top.get_next()
     
     # Stack size
     def queue_size(self):
         aux = self._top
         count = 0
-        while aux is not None:
+        while aux != None:
             aux = aux.get_next()
             count+=1
         return count
     
     # Is empty
     def queue_is_empty(self):
-        return self._top is None
+        return self._top == None
     
     # Top
     def get_top(self):

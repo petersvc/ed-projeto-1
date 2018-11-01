@@ -3,13 +3,9 @@ from node import Node
 class Container: # STACK
 
     # Start
-    def __init__(self, top=None):
+    def __init__(self, top = None):
         self._top = top
-    
-    # Is empty
-    def is_empty(self):
-        return self._top is None
-    
+
     # Add
     def add(self, new_data):
         aux = Node()
@@ -20,15 +16,20 @@ class Container: # STACK
     
     # Remove
     def remove(self):
-        if self._top is None:
-            raise IndexError("Nao contem elemento.")
-        self._top = self._top.get_next()
+        if self._top == None:
+            print('Pilha vazia')
+        else: 
+            self._top = self._top.get_next()
+
+    # Is empty
+    def is_empty(self):
+        return self._top == None
     
     # Stack size
     def size(self):
         aux = self._top
         count = 0
-        while aux is not None:
+        while aux != None:
             aux = aux.get_next()
             count+=1
         return count
